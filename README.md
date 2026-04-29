@@ -1,4 +1,4 @@
-# Linux-Process-API-fork-wait-exec-
+<img width="811" height="650" alt="image" src="https://github.com/user-attachments/assets/213b01d0-b674-453c-8e8a-6adb98586a2d" /># Linux-Process-API-fork-wait-exec-
 Ex02-Linux Process API-fork(), wait(), exec()
 # Ex02-OS-Linux-Process API - fork(), wait(), exec()
 Operating systems Lab exercise
@@ -66,23 +66,29 @@ int main() {
 ## C Program to execute Linux system commands using Linux API system calls exec() , exit() , wait() family
 
 #include <stdio.h>
-#include<stdlib.h>
-int main(){
-   int pid; 
-   pid=fork(); 
-   if(pid == 0) {
-        printf("Iam child my pid is %d\n",getpid());   
-        printf("My parent pid is:%d\n",getppid()); 
-        exit(0);
- } 
-   else{ 
-        printf("I am parent, my pid is %d\n",getpid()); 
-        sleep(100); 
-        exit(0);
-} 
+#include <sys/types.h>
+#include <unistd.h>
 
+int main(void)
+{
+    pid_t pid;
+
+    pid = fork();   // create new process
+
+    if (pid == 0) {
+        // Child process
+        printf("Child Process ID: %d\n", getpid());
+        printf("Child Parent ID: %d\n", getppid());
+    } else {
+        // Parent process
+        printf("Parent Process ID: %d\n", getpid());
+        printf("Parent Parent ID: %d\n", getppid());
+    }
+
+    return 0;
+}
 ##OUTPUT
-![alt text](image-1.png)
+<img width="811" height="650" alt="Screenshot 2026-04-29 101105" src="https://github.com/user-attachments/assets/8f2f32db-40a0-4f42-bcce-1a7e1cb1bb35" />
 
 # RESULT:
 The programs are executed successfully.
